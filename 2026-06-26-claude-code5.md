@@ -1,0 +1,418 @@
+---
+title: "Claude Code零基础小白教程第5章：程序员实战，全流程开发场景"
+url: https://mp.weixin.qq.com/s?__biz=MjM5NzQ0NzIyOQ==&mid=2448131830&idx=1&sn=ab69c72f98c4066a8ca0735f861429fc&chksm=b2c6f5a485b17cb2444952a8e4594641923551da502873f39d31777abdfa3a91119406bf67ff&cur_album_id=4566215426073788416&scene=189#wechat_redirect
+byline: "萝卜啊"
+saved: 2026-06-26T09:09:28.882Z
+---
+# Claude Code零基础小白教程第5章：程序员实战，全流程开发场景
+
+> **第二阶段**：项目实战——用 Claude Code 解决真实问题，本阶段共两章节，分为第5章节程序员实战和第6章节非程序员实战
+> 
+> **本阶段目标**：通过四个程序员场景和四个非程序员场景的完整实战，掌握 Claude Code 在日常工作中的应用模式。每个场景都可以独立操作，你可以根据自己的身份和需求选择性阅读。
+
+本章覆盖程序员日常工作中最常见的四个场景：Debug、重构、新功能开发、遗留代码理解。每个场景都配有完整的操作步骤，请在你的真实项目中跟着操作。
+
+### 5.1 场景一：自主 Debug——让 Claude Code 帮你修 Bug
+
+![图片](https://mmbiz.qpic.cn/mmbiz_jpg/MiaEMf64Ymoj5Ac8mQic6aklPzdYHyQjr68B4Z0Ro9TB1S7uX4dtK0sNgkZq5yOPicqg08YoibVPSianibm6VMSWSlUhIxvEDSNticRfVZfzoAuKgQ/640?wx_fmt=jpeg&from=appmsg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=0)
+
+#### 传统 Debug vs Claude Code 代理式 Debug
+
+传统 Debug 流程通常是这样的：
+
+1.  发现 Bug，看报错信息
+    
+2.  猜测可能的原因
+    
+3.  加 log 或断点调试
+    
+4.  定位问题代码
+    
+5.  修改
+    
+6.  验证是否修好
+    
+7.  如果没修好，回到第 2 步
+    
+
+这个过程可能需要反复多次，特别是当你对相关代码不够熟悉的时候。
+
+Claude Code 的代理式 Debug 把这个流程变成了：
+
+1.  把 Bug 描述和报错信息告诉 Claude Code
+    
+2.  Claude Code 自己搜索相关代码、分析原因、修改、运行测试验证
+    
+3.  如果测试不通过，它会继续修改，直到通过为止
+    
+4.  你只需要确认最终结果
+    
+
+**关键区别**：你把“排查-修改-验证”这个循环交给了 AI，自己只需要描述问题和确认结果。
+
+#### 实战任务：修复一个真实的 Bug
+
+**准备工作**：在你当前的项目中找一个已知 Bug，或者用以下方式创建一个练习 Bug。
+
+如果你没有现成的 Bug 可用，可以快速创建一个练习项目：
+
+`       1  2  3          mkdir ~/Desktop/debug-practice   cd ~/Desktop/debug-practice   git init            `
+
+然后创建一个有 Bug 的代码文件 `calculator.js`：
+
+`       1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  28  29  30          // calculator.js - 一个简单的计算器模块   // Bug: 除法没有处理除数为 0 的情况       function add(a, b) {       return a + b;   }       function subtract(a, b) {       return a - b;   }       function multiply(a, b) {       return a * b;   }       function divide(a, b) {       return a / b;  // Bug: b 为 0 时返回 Infinity 而不是抛出错误   }       function calculate(operator, a, b) {       switch (operator) {           case '+': return add(a, b);           case '-': return subtract(a, b);           case '*': return multiply(a, b);           case '/': return divide(a, b);           default: throw new Error('Unknown operator: ' + operator);       }   }       module.exports = { add, subtract, multiply, divide, calculate };            `
+
+再创建一个测试文件 `calculator.test.js`：
+
+`       1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20          const { add, subtract, multiply, divide, calculate } = require('./calculator');       // 测试 add   console.assert(add(1, 2) === 3, 'add(1, 2) should be 3');   console.assert(add(-1, 1) === 0, 'add(-1, 1) should be 0');       // 测试 subtract   console.assert(subtract(3, 1) === 2, 'subtract(3, 1) should be 2');       // 测试 multiply   console.assert(multiply(2, 3) === 6, 'multiply(2, 3) should be 6');       // 测试 divide   console.assert(divide(6, 2) === 3, 'divide(6, 2) should be 3');   // 注意：没有测试除数为 0 的情况——这就是我们要修的 Bug       // 测试 calculate   console.assert(calculate('+', 1, 2) === 3, 'calculate(+, 1, 2) should be 3');       console.log('All tests passed!');            `
+
+运行测试看看：
+
+`       1  2          node calculator.test.js   # 应该输出: All tests passed!            `
+
+测试通过了，因为目前没有覆盖除数为 0 的边界情况。
+
+**第1步**：启动 Claude Code
+
+`       1  2          cd ~/Desktop/debug-practice   claude            `
+
+**第2步**：描述 Bug
+
+在 Claude Code 中输入：
+
+`       1  2  3  4  5  6  7  8          这个项目是一个简单的计算器模块。我发现一个问题：divide 函数在除数为 0 时返回 Infinity，而没有抛出错误或返回有意义的信息。这是一个需要修复的 Bug。       请帮我做以下事情：   1. 分析 divide 函数的问题   2. 修复代码，让除数为 0 时抛出一个有意义的错误   3. 在测试文件中添加除数为 0 的测试用例   4. 运行测试确保修复正确，所有测试通过（包括新增的边界测试）   5. 如果一切正常，帮我用 git 提交这次修改，commit message 要清晰描述做了什么            `
+
+**第3步**：观察 Claude Code 的工作过程
+
+你会看到 Claude Code：
+
+1.  读取 `calculator.js` 和 `calculator.test.js`
+    
+2.  分析 `divide` 函数的问题
+    
+3.  修改代码，添加除数为 0 的判断
+    
+4.  在测试文件中添加新的测试用例
+    
+5.  运行 `node calculator.test.js` 验证
+    
+6.  如果测试失败，它会继续修改
+    
+7.  一切通过后，执行 `git add` 和 `git commit`
+    
+
+整个过程通常在一两分钟内完成。你不需要手动写一行代码。
+
+**完成后的检查**：
+
+-   查看 `calculator.js`，确认 `divide` 函数已添加了除数为 0 的处理
+    
+-   查看 `calculator.test.js`，确认已添加边界测试
+    
+-   运行 `git log`，确认 commit 已创建
+    
+
+#### 关键技巧：描述 Bug 时应该提供什么
+
+为了让 Claude Code 最高效地修复 Bug，你的描述应该包含：
+
+信息项
+
+说明
+
+示例
+
+预期行为
+
+应该发生什么
+
+“除数为 0 时应该抛出错误”
+
+实际行为
+
+现在发生了什么
+
+“目前返回 Infinity”
+
+复现步骤
+
+如何触发这个 Bug
+
+“调用 divide(6, 0)”
+
+报错信息（如有）
+
+完整的错误堆栈
+
+把终端输出直接贴过来
+
+影响范围
+
+Bug 影响的文件或模块
+
+“在 calculator.js 的 divide 函数中”
+
+> **一个实用心法**：如果你不确定 Bug 的具体原因，可以直接把错误日志贴给 Claude Code，告诉它“这个报错是什么意思？帮我修。”它会自己分析。
+
+### 5.2 场景二：跨文件重构——大型改动不再头疼
+
+![图片](data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='1px' height='1px' viewBox='0 0 1 1' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3E%3C/title%3E%3Cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' fill-opacity='0'%3E%3Cg transform='translate(-249.000000, -126.000000)' fill='%23FFFFFF'%3E%3Crect x='249' y='126' width='1' height='1'%3E%3C/rect%3E%3C/g%3E%3C/g%3E%3C/svg%3E)
+
+#### 为什么跨文件重构是 Claude Code 的杀手锏
+
+传统的手动重构痛苦之处在于：
+
+-   你需要在几十个文件之间跳转
+    
+-   改了一个地方，可能漏了另一个地方
+    
+-   运行测试后发现改了不该改的，又得回退
+    
+-   整个过程持续一两个小时，注意力高度紧张
+    
+
+Claude Code 做重构的优势：
+
+-   一次性扫描整个项目，找出所有需要修改的位置
+    
+-   制定修改计划（你可以先审阅计划再让它执行）
+    
+-   逐文件修改，不会遗漏
+    
+-   修改后自动运行测试验证
+    
+
+#### 实战任务：将回调风格改为 async/await
+
+**准备工作**：创建一个模拟的老式 Node.js 项目，使用回调风格。
+
+`       1  2  3          mkdir ~/Desktop/refactor-practice   cd ~/Desktop/refactor-practice   git init            `
+
+创建 `users.js`（模拟用户数据操作）：
+
+`       1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36  37  38  39          // users.js - 使用回调风格的用户数据操作       const users = [       { id: 1, name: 'Alice', email: 'alice@example.com' },       { id: 2, name: 'Bob', email: 'bob@example.com' },       { id: 3, name: 'Charlie', email: 'charlie@example.com' }   ];       function getUser(id, callback) {       setTimeout(() => {           const user = users.find(u => u.id === id);           if (user) {               callback(null, user);           } else {               callback(new Error('User not found'));           }       }, 100);   }       function getUserByEmail(email, callback) {       setTimeout(() => {           const user = users.find(u => u.email === email);           if (user) {               callback(null, user);           } else {               callback(new Error('User not found'));           }       }, 100);   }       function createUser(name, email, callback) {       setTimeout(() => {           const newUser = { id: users.length + 1, name, email };           users.push(newUser);           callback(null, newUser);       }, 100);   }       module.exports = { getUser, getUserByEmail, createUser };            `
+
+创建 `app.js`（使用这些回调函数）：
+
+`       1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  28  29          // app.js - 使用回调风格调用用户模块       const { getUser, createUser, getUserByEmail } = require('./users');       // 嵌套回调地狱示范   getUser(1, (err, user) => {       if (err) {           console.error('Error:', err.message);           return;       }       console.log('Found user:', user);           getUserByEmail(user.email, (err, userByEmail) => {           if (err) {               console.error('Error:', err.message);               return;           }           console.log('Found by email:', userByEmail);               createUser('Dave', 'dave@example.com', (err, newUser) => {               if (err) {                   console.error('Error:', err.message);                   return;               }               console.log('Created user:', newUser);               console.log('All operations completed!');           });       });   });            `
+
+运行看看效果：
+
+`       1  2          node app.js   # 应该输出三个操作的结果和 "All operations completed!"            `
+
+**第1步**：启动 Claude Code
+
+`       1  2          cd ~/Desktop/refactor-practice   claude            `
+
+**第2步**：描述重构需求
+
+`       1  2  3  4  5  6  7  8  9  10          这个项目目前使用回调风格（callback style）。请帮我把所有代码重构为 async/await 风格。       具体来说：   1. users.js 中的所有函数改为返回 Promise 的 async 函数   2. app.js 中的回调嵌套改为 async/await 的扁平写法   3. 保持功能完全不变   4. 重构完成后，运行 node app.js 确保输出和之前一致   5. 如果一切正常，用 git 提交       注意：如果遇到需要确认的地方，先用 Plan Mode 展示你的修改计划，等我确认后再执行。            `
+
+**第3步**：审阅计划
+
+Claude Code 会先展示一个修改计划，列出：
+
+-   哪些文件需要修改
+    
+-   每个文件的具体改动
+    
+-   改动的理由
+    
+
+仔细阅读这个计划。如果你发现有问题（比如它想改一个你不想动的文件），现在就可以告诉它调整。确认无误后，告诉它“执行”。
+
+**第4步**：观察执行过程
+
+Claude Code 会：
+
+1.  读取所有需要修改的文件
+    
+2.  逐文件修改
+    
+3.  修改完成后运行 `node app.js` 验证
+    
+4.  如果输出和原来一致，提交 Git
+    
+
+#### 对比手动重构的效率
+
+操作
+
+手动重构
+
+Claude Code
+
+分析所有回调函数
+
+5-10 分钟
+
+10-20 秒
+
+修改 users.js
+
+5 分钟
+
+30 秒
+
+修改 app.js
+
+3 分钟
+
+20 秒
+
+排查遗漏
+
+2-10 分钟
+
+自动，不会遗漏
+
+运行验证
+
+1 分钟
+
+自动
+
+**总计**
+
+**15-30 分钟**
+
+**2-5 分钟**
+
+而且 Claude Code 不会因为疲劳而漏掉某个文件中的某个回调。
+
+> **安全重构的必备习惯**：**永远先看计划再执行**。你可以告诉 Claude Code：“先用 Plan Mode 展示你的修改计划，不要直接修改代码。”等确认后再让它执行。这会给你一个安全网，避免 AI 误解你的意图。
+
+### 5.3 场景三：新功能开发——从需求到 PR 的全流程
+
+![图片](data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='1px' height='1px' viewBox='0 0 1 1' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3E%3C/title%3E%3Cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' fill-opacity='0'%3E%3Cg transform='translate(-249.000000, -126.000000)' fill='%23FFFFFF'%3E%3Crect x='249' y='126' width='1' height='1'%3E%3C/rect%3E%3C/g%3E%3C/g%3E%3C/svg%3E)
+
+Claude Code 不仅能修 Bug 和重构，还能从零开发新功能。这个场景展示了完整的新功能开发流程。
+
+#### 实战任务：给 Web 应用添加 API 接口
+
+**准备工作**：创建一个简单的 Express 后端项目。
+
+`       1  2  3  4  5          mkdir ~/Desktop/feature-practice   cd ~/Desktop/feature-practice   git init   npm init -y   npm install express            `
+
+创建基础 `index.js`：
+
+`       1  2  3  4  5  6  7  8  9  10  11  12          const express = require('express');   const app = express();   app.use(express.json());       // 基础路由   app.get('/', (req, res) => {       res.json({ message: 'Welcome to the API' });   });       app.listen(3000, () => {       console.log('Server running on http://localhost:3000');   });            `
+
+**第1步**：启动 Claude Code
+
+`       1  2          cd ~/Desktop/feature-practice   claude            `
+
+**第2步**：描述新功能需求
+
+`       1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17          这个项目是一个 Express.js 后端应用。请帮我添加一个完整的"任务管理"（Todo）模块。       功能要求：   1. 创建一个 tasks 数组作为内存数据存储   2. 实现以下 API 接口：      - POST /tasks —— 创建新任务（接收 title 和可选的 description）      - GET /tasks —— 获取所有任务列表      - GET /tasks/:id —— 获取单个任务      - PUT /tasks/:id —— 更新任务（可以修改 title、description 和 completed 状态）      - DELETE /tasks/:id —— 删除任务   3. 每个任务对象结构：{ id, title, description, completed, createdAt }   4. 添加基本的错误处理：      - 任务不存在时返回 404      - 缺少必填字段时返回 400   5. 写一个简单的测试脚本 test.js，用 fetch（Node.js 18+ 内置）测试所有接口   6. 运行测试确保所有接口正常工作   7. 功能验证通过后用 git 提交，commit message 格式: "feat: add task management API"            `
+
+**第3步**：观察完整的工作流
+
+Claude Code 的工作流程会是：
+
+**Explore（探索）**：先读取 `index.js` 和 `package.json`，了解项目结构和技术栈。
+
+**Plan（规划）**：制定实现计划——在 `index.js` 中添加路由，或者创建单独的 `tasks.js` 路由文件。
+
+**Code（编码）**：编写代码，包括路由、数据模型、错误处理。
+
+**Test（测试）**：编写 `test.js` 并运行，验证所有接口。
+
+**Commit（提交）**：用规范的 commit message 提交。
+
+整个过程你只需要旁观和最终确认。
+
+**完成后的检查**：
+
+-   手动运行 `node index.js` 启动服务器
+    
+-   用 curl 或 Postman 测试几个接口
+    
+-   查看 `test.js` 的内容，了解 Claude Code 写了什么样的测试
+    
+
+#### 单元测试的自动生成
+
+在上面的任务中，Claude Code 会自己写测试。你也可以专门让它为已有代码补充测试：
+
+`       1  2  3  4  5  6          请为 tasks 路由模块写单元测试，使用 Jest 框架。   要求：   1. 覆盖所有路由的正常情况   2. 覆盖错误情况（404、400）   3. 测试文件放在 __tests__/tasks.test.js   4. 安装 Jest 并运行测试            `
+
+### 5.4 场景四：遗留代码理解与文档化
+
+![图片](data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='1px' height='1px' viewBox='0 0 1 1' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3E%3C/title%3E%3Cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' fill-opacity='0'%3E%3Cg transform='translate(-249.000000, -126.000000)' fill='%23FFFFFF'%3E%3Crect x='249' y='126' width='1' height='1'%3E%3C/rect%3E%3C/g%3E%3C/g%3E%3C/svg%3E)
+
+#### 实战任务：接手一个没有文档的老项目
+
+这是程序员工作中最痛苦的场景之一。没有任何文档的遗留代码，变量命名不规范，注释稀疏——光是理解它就能花掉一整天。
+
+**准备工作**：找一个你不太熟悉的老项目，或者用下面的方式创建一个模拟遗留项目。
+
+`       1  2  3          mkdir ~/Desktop/legacy-practice   cd ~/Desktop/legacy-practice   git init            `
+
+创建几个模拟遗留代码文件（这是故意写得比较难读的代码）：
+
+`main.js`：
+
+`       1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20  21          // main.js   const d = require('./data');   const p = require('./proc');   const o = require('./out');       async function run(f, s) {       const r = await d.load(f);       const pr = p.process(r, s);       const res = o.format(pr);       await o.save(res, f.replace('.in', '.out'));       return res;   }       if (require.main === module) {       const args = process.argv.slice(2);       run(args[0], parseInt(args[1]) || 10)           .then(r => console.log('Done:', r.summary))           .catch(e => console.error(e));   }       module.exports = { run };            `
+
+`data.js`：
+
+`       1  2  3  4  5  6  7  8  9  10  11  12  13  14          // data.js   const fs = require('fs').promises;       async function load(p) {       const c = await fs.readFile(p, 'utf-8');       return c.split('\n')           .filter(l => l.trim())           .map(l => {               const parts = l.split(',');               return { n: parts[0], v: parseFloat(parts[1]), t: parts[2] || 'default' };           });   }       module.exports = { load };            `
+
+`proc.js`：
+
+`       1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20  21          // proc.js   function process(items, topN) {       const byType = {};       for (const item of items) {           if (!byType[item.t]) byType[item.t] = [];           byType[item.t].push(item);       }           const results = {};       for (const [type, typeItems] of Object.entries(byType)) {           const sorted = typeItems.sort((a, b) => b.v - a.v);           results[type] = {               top: sorted.slice(0, topN),               avg: sorted.reduce((s, i) => s + i.v, 0) / sorted.length,               total: sorted.reduce((s, i) => s + i.v, 0)           };       }       return results;   }       module.exports = { process };            `
+
+`out.js`：
+
+``       1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34          // out.js   const fs = require('fs').promises;       function format(data) {       let output = '=== Analysis Report ===\n\n';       let totalSum = 0;       let totalCount = 0;           for (const [type, info] of Object.entries(data)) {           output += `Type: ${type}\n`;           output += `  Average: ${info.avg.toFixed(2)}\n`;           output += `  Total: ${info.total.toFixed(2)}\n`;           output += `  Top ${info.top.length}:\n`;           for (const item of info.top) {               output += `    - ${item.n}: ${item.v}\n`;           }           output += '\n';           totalSum += info.total;           totalCount += info.top.length;       }           output += `=== Grand Total: ${totalSum.toFixed(2)} | Items in Top: ${totalCount} ===\n`;           return {           formatted: output,           summary: `${Object.keys(data).length} types analyzed, grand total: ${totalSum.toFixed(2)}`       };   }       async function save(result, outPath) {       await fs.writeFile(outPath, result.formatted);   }       module.exports = { format, save };            ``
+
+创建一个示例数据文件 `sample.in`：
+
+`       1  2  3  4  5  6  7  8  9  10  11  12          Apple,100,fruit   Banana,80,fruit   Orange,60,fruit   Carrot,50,vegetable   Broccoli,40,vegetable   Spinach,30,vegetable   Chicken,200,meat   Beef,300,meat   Pork,150,meat   Salmon,250,seafood   Tuna,180,seafood   Shrimp,220,seafood            `
+
+运行一下看看效果：
+
+`       1          node main.js sample.in 2            `
+
+**第1步**：启动 Claude Code
+
+`       1  2          cd ~/Desktop/legacy-practice   claude            `
+
+**第2步**：让 Claude Code 帮你理解代码
+
+`       1  2  3  4  5  6  7  8  9  10  11  12  13          这个项目看起来是一个数据分析工具，但代码写得不太易读。请帮我：       1. 深入分析整个项目的结构和数据流向   2. 解释每个文件的作用和核心逻辑   3. 重命名所有含义不清的变量名（如 d、r、p、s、c 等），让代码可读   4. 给所有函数添加 JSDoc 注释   5. 生成一个 README.md，说明项目的用途、使用方法和技术细节   6. 如果发现任何潜在的 Bug 或可优化的地方，一并修复       注意：   - 重命名变量时要确保不改变任何功能   - 修改完成后运行 node main.js sample.in 2 确认输出不变   - 每个修改作为一个单独的 commit            `
+
+**第3步**：观察 Claude Code 的“解谜”过程
+
+这是 Claude Code 最令人印象深刻的场景之一。它会：
+
+1.  逐个文件阅读： 理解每个文件的作用
+2.  追踪数据流： 从 `main.js` 开始，追踪数据如何从 `data.load` → `proc.process` → `out.format` → `out.save`
+3.  推断业务逻辑： 理解这是一个按类型分组、排序、计算统计数据并输出报告的工具
+4.  重命名变量： `d` → `data`，`p` → `proc`，`s` → `topN`，`c` → `content`
+5.  添加注释： 给每个函数添加清晰的 JSDoc
+6.  生成 README： 包含项目说明、使用方法、输入格式、输出格式
+
+整个流程走下来，一个不可读的项目变成了一个文档清晰、变量命名规范的项目。
+
+#### 使用 CLAUDE.md 建立项目上下文
+
+在上面的任务中，你可能注意到了——Claude Code 通过自己读代码来理解项目。但如果你提前为项目写一个 `CLAUDE.md`，它就能更快地进入工作状态。
+
+`CLAUDE.md` 是 Claude Code 的“项目说明书”，放在项目根目录。Claude Code 每次启动时会自动读取它。关于 CLAUDE.md 的详细写法，请参见第 7 章。
+
+### 本章小结
+
+完成本章四个场景后，你应该已经能够在日常开发中熟练使用 Claude Code 处理：
+
+-   Bug 修复（自己排查、修复、验证）
+    
+-   跨文件重构（先计划、再执行、自动验证）
+    
+-   新功能开发（从需求到 PR 的全流程）
+    
+-   遗留代码理解（分析、重命名、文档化）
+    
+
+**一个核心习惯**：**让 Claude Code 写代码，你来审查和决策。** 它是你的执行伙伴，不是替代你思考的机器。你决定“做什么”和“怎么做对”，它帮你做“怎么做好”和“怎么做完”。
