@@ -1,0 +1,261 @@
+---
+title: "Claude Code零基础小白教程第4章：你的第一个任务：上手即实战"
+url: https://mp.weixin.qq.com/s?__biz=MjM5NzQ0NzIyOQ==&mid=2448131821&idx=1&sn=1e09777abebc7ef17e863054f96a6c74&chksm=b2c6f5bf85b17ca9a178d4a8b69153f34145997e04f8317ceb256096afc2803b9212d3351922&cur_album_id=4566215426073788416&scene=189#wechat_redirect
+byline: "萝卜啊"
+saved: 2026-06-26T09:46:32.185Z
+---
+# Claude Code零基础小白教程第4章：你的第一个任务：上手即实战
+
+> **第一阶段包含第一章至第四章**：主要任务是快速上手——从安装到跑通第一个任务
+> 
+> **本阶段目标**：完成环境搭建、Claude Code 安装、国产模型配置，并成功执行你的第一个任务。预计用时 1-2 小时。
+
+配置好了环境，现在该让 Claude Code 真正干点活了。本章有两个版本的实战任务，分别面向非程序员和程序员，你可以根据自己的身份选择。当然，两个都做一遍更好——你会发现 Claude Code 在不同场景下的强大适应能力。
+
+### 4.1 启动 Claude Code
+
+![图片](data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='1px' height='1px' viewBox='0 0 1 1' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3E%3C/title%3E%3Cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' fill-opacity='0'%3E%3Cg transform='translate(-249.000000, -126.000000)' fill='%23FFFFFF'%3E%3Crect x='249' y='126' width='1' height='1'%3E%3C/rect%3E%3C/g%3E%3C/g%3E%3C/svg%3E)
+
+打开你的终端（Windows 用户请用 Git Bash），输入：
+
+`       1          claude            `
+
+首次启动时，Claude Code 会进行一些初始化设置：
+
+-   询问你是否同意匿名使用数据收集（可选，选 Yes 或 No 都不影响使用）
+    
+-   检测当前目录是否有 Git 仓库（如果没有也没关系，后续可以随时初始化）
+    
+-   加载可能存在的 `CLAUDE.md` 文件（如果当前目录还没有，会跳过）
+    
+
+一路回车接受默认设置即可。之后，你会看到 Claude Code 的交互提示符：
+
+`       1          >            `
+
+这就是你和 Claude Code 对话的地方。从这里开始，你说的每一句话都会触发 Claude Code 的思考和行动。
+
+> **注意**：Claude Code 不是“一问一答”的工具。它会根据你的需求自行采取行动——读取文件、搜索代码、执行命令、修改文件。你可能会在屏幕上看到它跑测试、执行 Git 操作等。这是正常行为，说明它正在为你工作。
+
+### 4.2 第一个实战任务
+
+![图片](data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='1px' height='1px' viewBox='0 0 1 1' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3E%3C/title%3E%3Cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' fill-opacity='0'%3E%3Cg transform='translate(-249.000000, -126.000000)' fill='%23FFFFFF'%3E%3Crect x='249' y='126' width='1' height='1'%3E%3C/rect%3E%3C/g%3E%3C/g%3E%3C/svg%3E)
+
+#### 面向非程序员：让 Claude Code 帮你整理一个乱七八糟的文件夹
+
+**场景**：你的下载文件夹（或任何一个杂乱的文件夹）里堆了上百个文件——图片、文档、安装包、压缩包、代码文件……手动分类整理既费时又枯燥。
+
+**任务**：让 Claude Code 自动按文件类型分类，把所有文件整理到不同的子文件夹中，并输出一份整理报告。
+
+**操作步骤**：
+
+**第1步**：创建一个练习用的杂乱文件夹（如果你的下载文件夹本身就很乱，也可以直接用）
+
+`       1  2          mkdir ~/Desktop/claude-test-folder   cd ~/Desktop/claude-test-folder            `
+
+在第3步会告诉 Claude Code 帮你创建一些测试文件，所以现在先保持这个文件夹为空。
+
+**第2步**：在这个目录下启动 Claude Code
+
+`       1  2          cd ~/Desktop/claude-test-folder   claude            `
+
+**第3步**：在 Claude Code 中输入以下任务描述：
+
+`       1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20  21          请帮我在当前文件夹下完成以下操作：       1. 先创建一些乱七八糟的测试文件来模拟一个杂乱的文件夹：      - 几张图片文件（.jpg, .png），名字随意      - 几个文档文件（.pdf, .docx, .txt），名字随意      - 几个压缩包（.zip, .tar.gz）      - 几个代码文件（.js, .py, .html）      - 几个其他类型的文件      总共创建大约 15-20 个不同类型的文件。       2. 然后把这些文件按类型分类整理：      - 图片文件放到"图片"文件夹      - 文档文件放到"文档"文件夹      - 压缩包放到"压缩包"文件夹      - 代码文件放到"代码"文件夹      - 其他文件放到"其他"文件夹       3. 整理完成后，生成一份整理报告（report.md），包含：      - 每个文件夹里有哪些文件      - 文件总数      - 各类文件的数量统计            `
+
+按下回车，观察 Claude Code 的运行过程。
+
+**你可能会看到的**：
+
+-   Claude Code 逐条创建文件（用 `touch` 命令或写一个小脚本）
+    
+-   确认文件已创建
+    
+-   创建分类文件夹
+    
+-   把文件移动到对应文件夹
+    
+-   生成 `report.md`
+    
+-   显示操作完成，并总结做了什么
+    
+
+**如果中途出错**：如果 Claude Code 在执行某个步骤时遇到问题（比如命令权限不够），它会告诉你发生了什么，并尝试用别的方式完成。如果它问你是否需要调整方案，回答它即可。大多数情况下，它能自己解决。
+
+**完成后的检查**：
+
+-   用文件管理器打开 `~/Desktop/claude-test-folder`，看看文件是否被正确分类
+    
+-   打开 `report.md`，检查报告是否符合你的要求
+    
+
+**你的收获**：你只用了不到 5 分钟的时间（大部分时间是在看它操作），就完成了一个原本可能需要半小时手动操作的任务。而且你没有写一行代码，只是用自然语言描述了需求。
+
+#### 面向程序员：让 Claude Code 帮你分析一个陌生项目
+
+**场景**：你在 GitHub 上发现一个有意思的开源项目，但代码量大、目录结构复杂，光靠自己看 README 很难快速理解核心架构。或者，你接手了一个同事留下的代码仓库，没有任何文档。
+
+**任务**：让 Claude Code 帮你分析项目结构，识别核心模块，梳理数据流向，并生成一份项目分析报告。
+
+**操作步骤**：
+
+**第1步**：选择一个你想分析的项目，clone 到本地。这里以一个示例为准（如果你有自己的项目更好）：
+
+`       1  2          git clone https://github.com/expressjs/express.git ~/Desktop/express-analysis   cd ~/Desktop/express-analysis            `
+
+**第2步**：在这个目录下启动 Claude Code
+
+`       1          claude            `
+
+**第3步**：输入任务描述：
+
+`       1  2  3  4  5  6  7  8  9          请帮我分析这个项目。我不是很熟悉这个代码库，需要你帮我搞清楚以下内容：       1. 项目是做什么的？核心功能是什么？   2. 项目的目录结构是怎样的？每个主要目录的职责是什么？   3. 核心模块有哪些？它们之间的依赖关系和调用流程是怎样的？   4. 请求处理的完整链路是什么样的？从收到 HTTP 请求到返回响应，经过了哪些关键函数？   5. 有哪些对外暴露的主要 API 或接口？       请把你的分析结果写入 ANALYSIS.md 文件，用清晰的结构化格式呈现。            `
+
+按下回车，观察 Claude Code 的分析过程。
+
+**你可能会看到的**：
+
+-   Claude Code 先列出顶层文件（`ls` 或 `tree`）
+    
+-   读取 README.md、package.json 等核心文件
+    
+-   逐目录遍历，读取关键源码文件
+    
+-   追踪函数调用链
+    
+-   生成 `ANALYSIS.md`
+    
+
+**完成后的检查**：
+
+-   打开 `ANALYSIS.md`，检查分析是否准确、深入
+    
+-   如果有任何遗漏或错误，可以继续和 Claude Code 对话，让它补充或修正
+    
+
+**你的收获**：你在几分钟内获得了对一个陌生代码库的深入理解。如果手工做这件事，你可能需要花一两个小时读代码、画调用图。Claude Code 帮你完成了“阅读”部分，你只需要做“理解和决策”。
+
+### 4.3 理解 Claude Code 的工作模式：Agent Loop
+
+![图片](data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='1px' height='1px' viewBox='0 0 1 1' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3E%3C/title%3E%3Cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' fill-opacity='0'%3E%3Cg transform='translate(-249.000000, -126.000000)' fill='%23FFFFFF'%3E%3Crect x='249' y='126' width='1' height='1'%3E%3C/rect%3E%3C/g%3E%3C/g%3E%3C/svg%3E)
+
+完成上面的任务后，你可能会好奇：Claude Code 到底是怎么工作的？它为什么能自己“动手”？
+
+Claude Code 的工作模式是一个循环，称为 **Agent Loop**：
+
+`       1          感知（Observe）→ 思考（Think）→ 行动（Act）→ 验证（Verify）→ 回到感知            `
+
+**感知**：Claude Code 读取当前状态——项目文件、终端输出、对话历史。它通过 `read_file`、`search_code`、`run_command` 等工具获取信息。
+
+**思考**：大模型分析感知到的信息，决定下一步该做什么。它可能会制定一个计划，也可能会直接判断“任务已经完成”。
+
+**行动**：执行工具调用来改变环境——写文件、运行命令、修改代码、创建目录。这是 Claude Code “动手”的环节。
+
+**验证**：行动之后，Claude Code 会检查结果是否符合预期。比如运行测试看是否通过，检查文件是否成功创建。如果发现不对，它会回到“感知”，重新分析。
+
+**对比网页版 ChatGPT/Claude 的本质区别**：
+
+网页版 AI
+
+Claude Code
+
+交互方式
+
+你问，它答
+
+你给任务，它干活
+
+行动能力
+
+只能输出文字
+
+可以操作文件、执行命令、读写项目
+
+工作模式
+
+单轮问答
+
+多轮 Agent Loop，自主推进
+
+交付物
+
+一段建议或代码
+
+完整的成果（修改后的文件、生成的报告、通过的测试）
+
+反馈循环
+
+无（需要你手动把结果贴回去）
+
+有（自己验证、自己修正）
+
+换句话说：网页版 AI **回答**你的问题，Claude Code **完成**你的任务。
+
+### 4.4 新手常见错误与排错指南
+
+![图片](data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='1px' height='1px' viewBox='0 0 1 1' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3E%3C/title%3E%3Cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' fill-opacity='0'%3E%3Cg transform='translate(-249.000000, -126.000000)' fill='%23FFFFFF'%3E%3Crect x='249' y='126' width='1' height='1'%3E%3C/rect%3E%3C/g%3E%3C/g%3E%3C/svg%3E)
+
+作为本章的收尾，这里汇总了新手最容易遇到的几个问题。
+
+#### 问题一：连接报错
+
+**症状**：启动 `claude` 后立即报错，提示 API Key 无效或网络连接失败。
+
+**排查**：
+
+1.  检查环境变量是否设置正确：`` echo $ANTHROPIC_BASE_URL`和` ``echo $ANTHROPIC\_API\_KEY
+    
+2.  确认 Key 没有多复制空格或换行符
+    
+3.  如果用的国产模型，确认端点地址是否正确（智谱和百炼的端点不同）
+    
+4.  尝试 `curl` 测试一下端点是否可达
+    
+
+#### 问题二：权限报错
+
+**症状**：Claude Code 提示无法写入文件或无法执行命令。
+
+**排查**：
+
+1.  确认当前用户对操作的文件/目录有写入权限
+    
+2.  如果是在系统目录操作（如 `/usr/local`），可能需要管理员权限
+    
+3.  检查文件是否被其他程序打开锁定
+    
+4.  Windows 用户确认是在 Git Bash 中运行，而非 CMD
+    
+
+#### 问题三：响应异常
+
+**症状**：Claude Code 的回复乱码、不完整，或者完全没反应。
+
+**排查**：
+
+1.  确认模型是否在正常运行（可以在浏览器中测试 API 端点）
+    
+2.  检查是否超出了 API 的免费额度或速率限制
+    
+3.  尝试换一个更简单的问题测试
+    
+4.  重启终端和 Claude Code
+    
+
+#### 一条万能的排错思路
+
+无论遇到什么问题，按这个顺序排查：
+
+1.  先确认“能不能连上”： 用 `curl` 测试 `ANTHROPIC_BASE_URL` 是否可达
+2.  再确认“连上了能不能用”： 用简单的“你好”测试模型是否正常响应
+3.  最后确认“用了对不对”： 检查任务执行的具体报错，逐条分析
+
+绝大多数问题在第一步或第二步就能定位到。
+
+* * *
+
+**第一阶段到此结束。**
+
+你已经完成了 Claude Code 的环境搭建、安装配置、模型接入，并成功执行了第一个任务。现在你对 Claude Code 的基本工作模式有了直观的理解。
+
+下一阶段，我们将进入**项目实战**——用 Claude Code 解决程序员的日常开发任务（第5章）和非程序员的办公自动化任务（第6章）。在那里，你会真正感受到 Claude Code 的威力。
