@@ -19,20 +19,23 @@ Claude Code 的安装本身并不复杂——本质上就是一个 npm 包。但
 这是最正统的安装方式，适用于所有平台，也是后续升级最方便的途径。
 
 #### 基本安装命令
-
-`       1          npm install -g @anthropic-ai/claude-code            `
+```
+npm install -g @anthropic-ai/claude-code
+```
 
 `-g` 参数表示全局安装（global），安装完成后 `claude` 命令在整个系统中都可以使用。
 
 #### 国内镜像加速
 
 由于 npm 官方源在国内访问速度不稳定，强烈建议使用国内镜像：
-
-`       1          npm install -g @anthropic-ai/claude-code --registry=https://registry.npmmirror.com            `
+```
+npm install -g @anthropic-ai/claude-code --registry=https://registry.npmmirror.com
+```
 
 `npmmirror.com` 是淘宝 NPM 镜像的新域名，同步频率高、速度快。如果这个源不稳定，也可以换腾讯云镜像：
-
-`       1          npm install -g @anthropic-ai/claude-code --registry=https://mirrors.cloud.tencent.com/npm/            `
+```
+npm install -g @anthropic-ai/claude-code --registry=https://mirrors.cloud.tencent.com/npm/
+```
 
 #### macOS 权限问题
 
