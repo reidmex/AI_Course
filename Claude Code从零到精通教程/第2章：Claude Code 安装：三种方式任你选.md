@@ -42,8 +42,9 @@ npm install -g @anthropic-ai/claude-code --registry=https://mirrors.cloud.tencen
 如果你在 macOS 上遇到 `EACCES` 权限错误（很常见，因为 npm 的全局目录需要管理员权限），有两种解决方案：
 
 **方案一：直接加 `sudo`（简单直接）**
-
-`       1          sudo npm install -g @anthropic-ai/claude-code --registry=https://registry.npmmirror.com            `
+```
+sudo npm install -g @anthropic-ai/claude-code --registry=https://registry.npmmirror.com
+```
 
 系统会提示你输入开机密码，输入时屏幕不显示任何字符是正常的，输完回车即可。
 
@@ -54,20 +55,23 @@ npm install -g @anthropic-ai/claude-code --registry=https://mirrors.cloud.tencen
 #### 验证安装
 
 安装完成后，验证：
-
-`       1  2          claude --version   # 应输出类似: 2.1.139 (Claude Code v2.1.x)            `
+```
+claude --version   # 应输出类似: 2.1.139 (Claude Code v2.1.x)
+```
 
 如果提示 `claude: command not found`，说明全局安装的路径没有被加入到 PATH 环境变量中。这是 Windows 用户的高频问题，详见下文 2.3 节。
 
 #### 升级 Claude Code
 
 npm 全局安装的包，升级和安装用的是同一个命令：
-
-`       1          npm install -g @anthropic-ai/claude-code --registry=https://registry.npmmirror.com            `
+```
+npm install -g @anthropic-ai/claude-code --registry=https://registry.npmmirror.com
+```
 
 或者用 npm 的 update 命令：
-
-`       1          npm update -g @anthropic-ai/claude-code            `
+```
+npm update -g @anthropic-ai/claude-code
+```
 
 建议每月检查一次更新，Claude Code 的功能迭代非常快。
 
@@ -76,8 +80,9 @@ npm 全局安装的包，升级和安装用的是同一个命令：
 ![图片](https://mmbiz.qpic.cn/mmbiz_jpg/MiaEMf64Ymohgj9buWQ1RCxtP8NvWs87EMuomDOJ0euY4XztOJodouCTSh3nwTUhEprINCZSfHDUK2OyVTKFbpOPkzTsPuPUPiaARsh75Q1j4/640?wx_fmt=jpeg&from=appmsg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=1)
 
 如果你使用 Mac 且已经装了 Homebrew，这是最省心的方式——不需要 npm，也不需要处理权限问题。
-
-`       1          brew install --cask claude-code            `
+```
+brew install --cask claude-code
+```
 
 `--cask` 参数表示安装的是一个独立的应用程序（而非命令行工具），但安装完成后 `claude` 命令同样可以在终端中使用。
 
@@ -102,14 +107,16 @@ Windows 用户需要特别注意两个前置条件：
 2.  所有操作在 Git Bash 中执行（不要用 CMD 或 PowerShell）
 
 满足这两个条件后，npm 安装命令和 macOS/Linux 完全一样：
-
-`       1          npm install -g @anthropic-ai/claude-code --registry=https://registry.npmmirror.com            `
+```
+npm install -g @anthropic-ai/claude-code --registry=https://registry.npmmirror.com
+```
 
 #### 替代方案：WinGet 安装
 
 如果你的系统支持 WinGet（Windows 11 自带，Windows 10 需手动安装），也可以：
-
-`       1          winget install Anthropic.ClaudeCode            `
+```
+winget install Anthropic.ClaudeCode
+```
 
 但注意，WinGet 安装也需要 Git 环境，且安装完成后首次启动可能需要在 Git Bash 中额外配置 PATH。
 
@@ -120,22 +127,28 @@ Windows 用户需要特别注意两个前置条件：
 **排查步骤**：
 
 1.  先在 Git Bash 中查看 npm 的全局安装路径：
-    
-    `       1          npm config get prefix            `
+```
+npm config get prefix
+```
     
     输出类似 `/c/Users/你的用户名/AppData/Roaming/npm`
     
 2.  确认 `claude` 是否在这个路径下：
-    
-    `       1  2  3          ls "$(npm config get prefix)/claude"   # 或   ls "$(npm config get prefix)/claude.cmd"            `
+```
+ls "$(npm config get prefix)/claude"
+# 或
+ls "$(npm config get prefix)/claude.cmd"
+```
     
     如果文件存在但命令不识别，说明 PATH 没配。
     
 3.  将 npm 全局路径加入 PATH：
     
     打开 Git Bash，编辑 `~/.bashrc` 文件（如果没有就创建一个）：
-    
-    `       1  2          echo 'export PATH="(npm config get prefix)"' >> ~/.bashrc   source ~/.bashrc            `
+    ```
+    echo 'export PATH="(npm config get prefix)"' >> ~/.bashrc
+    source ~/.bashrc
+    ```
     
     然后重新打开 Git Bash，再次验证 `claude --version`。
     
