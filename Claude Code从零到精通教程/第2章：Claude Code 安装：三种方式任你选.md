@@ -130,8 +130,7 @@ winget install Anthropic.ClaudeCode
 ```
 npm config get prefix
 ```
-    
-    输出类似 `/c/Users/你的用户名/AppData/Roaming/npm`
+输出类似 `/c/Users/你的用户名/AppData/Roaming/npm`
     
 2.  确认 `claude` 是否在这个路径下：
 ```
@@ -139,8 +138,7 @@ ls "$(npm config get prefix)/claude"
 # 或
 ls "$(npm config get prefix)/claude.cmd"
 ```
-    
-    如果文件存在但命令不识别，说明 PATH 没配。
+如果文件存在但命令不识别，说明 PATH 没配。
     
 3.  将 npm 全局路径加入 PATH：
     
