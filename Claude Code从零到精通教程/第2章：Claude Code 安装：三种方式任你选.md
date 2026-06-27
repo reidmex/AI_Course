@@ -173,28 +173,34 @@ CC Switch 是一个开源的 Claude Code 配置切换工具，**图形化界面*
     
 
 **macOS 安装**：
-
-`       1  2          brew tap cc-switch/tap   brew install cc-switch            `
+```
+brew tap cc-switch/tap
+brew install cc-switch
+```
 
 安装完成后，在应用程序中找到 CC Switch，按界面提示操作即可。
 
 #### cc-switch CLI 工具
 
 如果你偏好命令行，也有一个同名的轻量级 CLI 工具：
-
-`       1          npm install -g cc-switch            `
-
+```
+npm install -g cc-switch
+```
 使用方式：
-
-`       1  2  3          cc-switch init     # 初始化配置向导   cc-switch list     # 查看可用模型列表   cc-switch use glm  # 切换到智谱 GLM            `
+```
+cc-switch init     # 初始化配置向导
+cc-switch list     # 查看可用模型列表
+cc-switch use glm  # 切换到智谱 GLM
+```
 
 **这些工具的价值**：它们帮你省去了手动编辑环境变量的步骤，降低了配置出错的概率。但本教程后续章节仍会详细讲解手动配置的方法——因为理解底层原理，才能在出问题时快速定位和修复。
 
 ### 本章小结
 
 到这一步，你的电脑上应该已经装好了 Claude Code。验证一下：
-
-`       1          claude --version            `
+```
+claude --version
+```
 
 如果能看到版本号（如 `2.1.139`），恭喜你，安装成功。
 
