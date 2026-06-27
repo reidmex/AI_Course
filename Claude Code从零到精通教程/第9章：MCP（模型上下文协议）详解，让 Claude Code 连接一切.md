@@ -68,8 +68,9 @@ MCP 服务器可以配置在两个级别：
 #### 实战 MCP 1：接入 GitHub
 
 **第1步**：安装 GitHub MCP 服务器
-
-`       1          npm install -g @anthropic/mcp-server-github            `
+```
+npm install -g @anthropic/mcp-server-github
+```
 
 **第2步**：获取 GitHub Personal Access Token
 
@@ -83,14 +84,29 @@ MCP 服务器可以配置在两个级别：
     
 
 **第3步**：配置 `.mcp.json`（项目级）
-
-`       1  2  3  4  5  6  7  8  9  10  11  12  13  14          {     "mcpServers": {       "github": {         "command": "npx",         "args": [           "-y",           "@anthropic/mcp-server-github"         ],         "env": {           "GITHUB_PERSONAL_ACCESS_TOKEN": "你的GitHub Token"         }       }     }   }            `
+```
+{
+     "mcpServers": {
+       "github": {
+         "command": "npx",
+         "args": [
+           "-y",
+           "@anthropic/mcp-server-github"
+         ],
+         "env": {
+           "GITHUB_PERSONAL_ACCESS_TOKEN": "你的GitHub Token"
+         }
+       }
+     }
+}
+```
 
 **第4步**：验证连接
 
 在 Claude Code 中输入：
-
-`       1          列出这个仓库最近 5 个 Issue            `
+```
+列出这个仓库最近 5 个 Issue
+```
 
 如果一切正常，Claude Code 会调用 GitHub MCP 服务器，获取并列出 Issue。
 
@@ -108,8 +124,20 @@ MCP 服务器可以配置在两个级别：
 #### 实战 MCP 2：接入文件系统（扩展文件操作能力）
 
 文件系统 MCP 服务器可以让你操作项目目录之外的文件：
-
-`       1  2  3  4  5  6  7  8  9  10  11  12          {     "mcpServers": {       "filesystem": {         "command": "npx",         "args": [           "-y",           "@anthropic/mcp-server-filesystem",           "/path/to/allowed/directory"         ]       }     }   }            `
+```
+{
+     "mcpServers": {
+       "filesystem": {
+         "command": "npx",
+         "args": [
+           "-y",
+           "@anthropic/mcp-server-filesystem",
+           "/path/to/allowed/directory"
+         ]
+       }
+     }
+}
+```
 
 注意 `/path/to/allowed/directory` 是你允许 Claude Code 访问的目录。默认情况下，Claude Code 只能访问项目内的文件。如果你需要它处理桌面上的文件或文档文件夹中的内容，就需要通过文件系统 MCP 来扩展权限。
 
@@ -121,67 +149,21 @@ MCP 服务器可以配置在两个级别：
 
 #### 适合程序员的
 
-MCP 服务器
-
-功能
-
-安装命令
-
-Postgres
-
-直连数据库，自然语言查询
-
-`npm install -g @anthropic/mcp-server-postgres`
-
-Docker
-
-管理容器、查看日志
-
-`npm install -g @anthropic/mcp-server-docker`
-
-Puppeteer
-
-浏览器自动化，用于 E2E 测试
-
-`npm install -g @anthropic/mcp-server-puppeteer`
-
-Git
-
-增强 Git 操作（超越内置能力）
-
-`npm install -g @anthropic/mcp-server-git`
+MCP 服务器|功能|安装命令
+-|-|-|
+Postgres|直连数据库，自然语言查询|`npm install -g @anthropic/mcp-server-postgres`
+Docker|管理容器、查看日志|`npm install -g @anthropic/mcp-server-docker`
+Puppeteer|浏览器自动化，用于 E2E 测试|`npm install -g @anthropic/mcp-server-puppeteer`
+Git|增强 Git 操作（超越内置能力）|`npm install -g @anthropic/mcp-server-git`
 
 #### 适合非程序员的
 
-MCP 服务器
-
-功能
-
-安装命令
-
-Brave Search
-
-联网搜索（需要 Brave API Key）
-
-`npm install -g @anthropic/mcp-server-brave-search`
-
-Notion
-
-读写 Notion 文档和数据库
-
-社区维护，安装方式见其 GitHub
-
-Google Drive
-
-操作 Google Drive 文件
-
-社区维护
-
-Slack
-
-发送消息、读取频道
-
-社区维护
+MCP 服务器|功能|安装命令
+-|-|-|
+Brave Search|联网搜索（需要 Brave API Key）|`npm install -g @anthropic/mcp-server-brave-search`
+Notion|读写 Notion 文档和数据库|社区维护，安装方式见其 GitHub
+Google Drive|操作 Google Drive 文件|社区维护
+Slack|发送消息、读取频道|社区维护
 
 #### 安装与配置速查
 
