@@ -168,8 +168,19 @@ Slack|发送消息、读取频道|社区维护
 #### 安装与配置速查
 
 所有 MCP 服务器的配置格式基本一致：
-
-`       1  2  3  4  5  6  7  8  9  10  11          {     "mcpServers": {       "服务器名称": {         "command": "命令",         "args": ["参数1", "参数2"],         "env": {           "环境变量名": "值"         }       }     }   }            `
+```
+{
+     "mcpServers": {
+       "服务器名称": {
+         "command": "命令",
+         "args": ["参数1", "参数2"],
+         "env": {
+           "环境变量名": "值"
+         }
+       }
+     }
+}
+```
 
 把它们添加到 `.mcp.json`（项目级）或 `~/.claude.json`（用户级）即可。
 
@@ -191,16 +202,33 @@ MCP 提供了“做什么”的能力，Skills 提供了“怎么做”的流程
 **操作步骤**：
 
 1.  先配置好 Brave Search MCP（需要注册 Brave Search API Key）
-    
+```
 
-`       1  2  3  4  5  6  7  8  9  10  11          {     "mcpServers": {       "brave-search": {         "command": "npx",         "args": ["-y", "@anthropic/mcp-server-brave-search"],         "env": {           "BRAVE_API_KEY": "你的Brave API Key"         }       }     }   }            `
+{
+     "mcpServers": {
+       "brave-search": {
+         "command": "npx",
+         "args": ["-y", "@anthropic/mcp-server-brave-search"],
+         "env": {
+           "BRAVE_API_KEY": "你的Brave API Key"
+         }
+       }
+     }
+}
+```
 
 1.  创建一个 competitor-analysis Skill（SKILL.md），定义分析维度：公司概况、产品功能、定价策略、市场定位、最新动态
     
 2.  在 Claude Code 中启动工作流：
-    
+```
 
-`       1  2  3  4  5  6          请用 competitor-analysis Skill，搜索并分析以下三家竞争对手的最新情况：   - 竞争对手 A   - 竞争对手 B   - 竞争对手 C       把结果整理成一份竞品分析报告，保存为 competitor-report.md            `
+请用 competitor-analysis Skill，搜索并分析以下三家竞争对手的最新情况
+- 竞争对手 A
+- 竞争对手 B
+- 竞争对手 C
+
+把结果整理成一份竞品分析报告，保存为 competitor-report.md
+```
 
 Claude Code 的执行过程：
 
