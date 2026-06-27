@@ -70,32 +70,39 @@ ANTHROPIC_API_KEY="sk-ant-xxxxxxxxxxxx"          # API 密钥
 **步骤二：获取兼容端点地址**
 
 智谱提供了兼容 Anthropic API 格式的端点：
-
-`       1          https://open.bigmodel.cn/api/anthropic            `
+```
+https://open.bigmodel.cn/api/anthropic
+```
 
 这个端点会接收 Anthropic 格式的请求，转发给 GLM 模型处理，然后返回 Anthropic 格式的响应。对 Claude Code 来说，它以为自己连的是 Anthropic 服务器。
 
 **步骤三：配置环境变量**
 
 **macOS / Linux**（在终端中执行）：
-
-`       1  2          export ANTHROPIC_BASE_URL="https://open.bigmodel.cn/api/anthropic"   export ANTHROPIC_API_KEY="你的智谱API Key"            `
+```
+export ANTHROPIC_BASE_URL="https://open.bigmodel.cn/api/anthropic"
+export ANTHROPIC_API_KEY="你的智谱API Key"
+```
 
 **Windows（Git Bash）**：
-
-`       1  2          export ANTHROPIC_BASE_URL="https://open.bigmodel.cn/api/anthropic"   export ANTHROPIC_API_KEY="你的智谱API Key"            `
+```
+export ANTHROPIC_BASE_URL="https://open.bigmodel.cn/api/anthropic"
+export ANTHROPIC_API_KEY="你的智谱API Key"
+```
 
 > **注意**：上面用 `export` 设置的环境变量只在当前终端窗口有效，关了窗口就没了。要让配置永久生效，见下文“永久配置方法”。
 
 **步骤四：启动验证**
 
 在同一个终端窗口中输入：
-
-`       1          claude            `
+```
+claude
+```
 
 如果一切正常，你会看到 Claude Code 的欢迎界面，提示你选择一个模型（如果服务商提供了多个模型的话）。输入一个简单的问题测试一下：
-
-`       1          你好，请简单介绍一下你自己。            `
+```
+你好，请简单介绍一下你自己。
+```
 
 如果收到了正常回复，恭喜你，配置成功！
 
@@ -106,8 +113,11 @@ ANTHROPIC_API_KEY="sk-ant-xxxxxxxxxxxx"          # API 密钥
 -   macOS / Linux（zsh）： 编辑 `~/.zshrc`
 -   macOS / Linux（bash）： 编辑 `~/.bashrc`
 -   Windows（Git Bash）： 编辑 `~/.bashrc`
-
-`       1  2  3          echo 'export ANTHROPIC_BASE_URL="https://open.bigmodel.cn/api/anthropic"' >> ~/.zshrc   echo 'export ANTHROPIC_API_KEY="你的智谱API Key"' >> ~/.zshrc   source ~/.zshrc            `
+```
+echo 'export ANTHROPIC_BASE_URL="https://open.bigmodel.cn/api/anthropic"' >> ~/.zshrc
+echo 'export ANTHROPIC_API_KEY="你的智谱API Key"' >> ~/.zshrc
+source ~/.zshrc
+```
 
 > **安全提醒**：如果你的电脑是多人共用，建议把 API Key 保存在更安全的文件中（如 `~/.claude/settings.json`），而不是直接写在 `.zshrc` 等可能被其他人看到的文件里。详见 3.3 节的 settings.json 配置方式。
 
@@ -131,14 +141,17 @@ ANTHROPIC_API_KEY="sk-ant-xxxxxxxxxxxx"          # API 密钥
 **步骤二：获取端点地址**
 
 阿里云百炼的 Anthropic 兼容端点：
-
-`       1          https://dashscope-intl.aliyuncs.com/compatible-mode/anthropic            `
+```
+https://dashscope-intl.aliyuncs.com/compatible-mode/anthropic
+```
 
 > **注意**：百炼的 Anthropic 兼容接口在持续迭代中，具体地址可能会更新。请以阿里云官方文档的最新说明为准。如果上述地址不可用，也可以直接使用 Anthropic 原生格式的 Key + 百炼直连地址。
 
 **步骤三：配置环境变量**
-
-`       1  2          export ANTHROPIC_BASE_URL="https://dashscope-intl.aliyuncs.com/compatible-mode/anthropic"   export ANTHROPIC_API_KEY="你的百炼API Key"            `
+```
+export ANTHROPIC_BASE_URL="https://dashscope-intl.aliyuncs.com/compatible-mode/anthropic"
+export ANTHROPIC_API_KEY="你的百炼API Key"
+```
 
 **步骤四：指定模型**
 
@@ -146,53 +159,13 @@ ANTHROPIC_API_KEY="sk-ant-xxxxxxxxxxxx"          # API 密钥
 
 #### 3.2.3 其他国产模型选项速览
 
-服务商
-
-推荐模型
-
-兼容端点
-
-特点
-
-智谱 AI
-
-GLM-5.1
-
-`open.bigmodel.cn/api/anthropic`
-
-综合能力强，中文理解好
-
-阿里百炼
-
-Qwen Code
-
-`dashscope-intl.aliyuncs.com/compatible-mode/anthropic`
-
-编程专项优化，速度快
-
-DeepSeek
-
-DeepSeek-V3/V4
-
-通过 OpenRouter 或华为云 MaaS 中转
-
-性价比极高，约 Claude 1/10 价格
-
-MiniMax
-
-ABAB 7
-
-官方 Anthropic 兼容接口（需查阅最新文档）
-
-多模态能力
-
-Moonshot
-
-Kimi Code
-
-通过中转服务
-
-长上下文支持好
+服务商|推荐模型|兼容端点|特点
+-|-|-|-|
+智谱 AI|GLM-5.1|`open.bigmodel.cn/api/anthropic`|综合能力强，中文理解好
+阿里百炼|Qwen Code|`dashscope-intl.aliyuncs.com/compatible-mode/anthropic`|编程专项优化，速度快
+DeepSeek|DeepSeek-V3/V4|通过 OpenRouter 或华为云 MaaS 中转|性价比极高，约 Claude 1/10 价格
+MiniMax|ABAB 7|官方 Anthropic 兼容接口（需查阅最新文档）|多模态能力
+Moonshot|Kimi Code|通过中转服务|长上下文支持好
 
 **选型建议**：
 
@@ -235,8 +208,10 @@ Kimi Code
 #### 配置方式
 
 使用中转服务时，环境变量配置与国产模型类似，只是把 BASE\_URL 和 API\_KEY 换成中转商提供的地址和 Key：
-
-`       1  2          export ANTHROPIC_BASE_URL="中转商提供的地址"   export ANTHROPIC_API_KEY="中转商提供的Key"            `
+```
+export ANTHROPIC_BASE_URL="中转商提供的地址"
+export ANTHROPIC_API_KEY="中转商提供的Key"
+```
 
 #### “混合方案”：日常用国产，关键时刻用中转
 
@@ -258,24 +233,34 @@ Kimi Code
 Ollama 是一个免费的开源工具，可以在本地运行各种开源大模型。
 
 **安装 Ollama**：
-
-`       1  2  3  4  5  6  7  8          # macOS   brew install ollama       # Linux   curl -fsSL https://ollama.com/install.sh | sh       # Windows   # 从 ollama.com 下载安装包            `
+```
+# macOS
+brew install ollama
+# Linux
+curl -fsSL https://ollama.com/install.sh | sh
+# Windows
+# 从 ollama.com 下载安装包
+```
 
 **下载模型**（以 Qwen 3 为例）：
-
-`       1          ollama pull qwen3:32b            `
+```
+ollama pull qwen3:32b
+```
 
 模型大小从 7B 到 72B 不等，32B 是一个性能和速度的折中选择。下载时间取决于你的网速，可能需要几十分钟。
 
 **启动 Ollama**：
-
-`       1          ollama serve            `
+```
+ollama serve
+```
 
 **配置 Claude Code 连接本地模型**：
 
 使用社区工具 `openclaude-cn` 或直接配置环境变量：
-
-`       1  2          export ANTHROPIC_BASE_URL="http://localhost:11434/v1"   export ANTHROPIC_API_KEY="ollama"  # Ollama 不需要真实 Key            `
+```
+export ANTHROPIC_BASE_URL="http://localhost:11434/v1"
+export ANTHROPIC_API_KEY="ollama"  # Ollama 不需要真实 Key
+```
 
 #### 适用场景与局限
 
@@ -308,16 +293,20 @@ Ollama 是一个免费的开源工具，可以在本地运行各种开源大模
 #### Claude Code 内置 `/model` 命令
 
 在 Claude Code 交互界面中，直接输入：
-
-`       1          /model            `
+```
+/model
+```
 
 系统会列出可用模型，你可以选择切换。但这个功能要求你的 API 服务端支持模型列表查询。
 
 #### CC Switch
 
 如第 2 章介绍的，CC Switch 提供了图形化界面或 CLI 命令来切换模型源：
-
-`       1  2  3          cc-switch use glm      # 切换智谱   cc-switch use qwen     # 切换通义千问   cc-switch use deepseek # 切换 DeepSeek            `
+```
+cc-switch use glm      # 切换智谱
+cc-switch use qwen     # 切换通义千问
+cc-switch use deepseek # 切换 DeepSeek
+```
 
 这种方式不需要手动改环境变量，切换一个命令搞定。
 
@@ -326,20 +315,23 @@ Ollama 是一个免费的开源工具，可以在本地运行各种开源大模
 完成本章后，你的 Claude Code 应该已经接上了模型。做一个最终验证：
 
 **第一步：确认环境变量已设置**
-
-`       1  2          echo $ANTHROPIC_BASE_URL   echo $ANTHROPIC_API_KEY            `
+```
+echo $ANTHROPIC_BASE_URL   echo $ANTHROPIC_API_KEY
+```
 
 应该输出你配置的地址和 Key。如果没有输出，说明环境变量没配好，回到对应小节检查。
 
 **第二步：启动 Claude Code**
-
-`       1          claude            `
+```
+claude
+```
 
 **第三步：做一个简单测试**
 
 在 Claude Code 中提问：
-
-`       1          用 Python 写一个函数，计算斐波那契数列的第 n 项，包含简单的测试。            `
+```
+用 Python 写一个函数，计算斐波那契数列的第 n 项，包含简单的测试。
+```
 
 如果 Claude Code 能够生成代码并（可能）执行测试，说明一切正常。
 
