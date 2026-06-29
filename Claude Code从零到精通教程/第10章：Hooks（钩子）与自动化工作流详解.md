@@ -44,8 +44,23 @@ Hooks 配置在 `.claude/settings.json`（项目级）或 `~/.claude/settings.
 #### 实战 Hook 1：代码编辑后自动格式化
 
 每次 Claude Code 写完代码后，自动运行 Prettier 格式化，保持代码整洁。
-
-`       1  2  3  4  5  6  7  8  9  10  11  12  13  14  15          {     "hooks": {       "PostToolUse": [         {           "matcher": "Edit|Write",           "hooks": [             {               "type": "command",               "command": "npx prettier --write ${CLAUDE_TOOL_INPUT_FILE_PATH} 2>/dev/null || true"             }           ]         }       ]     }   }            `
+```
+{
+     "hooks": {
+       "PostToolUse": [
+         {
+           "matcher": "Edit|Write",
+           "hooks": [
+             {
+               "type": "command",
+               "command": "npx prettier --write ${CLAUDE_TOOL_INPUT_FILE_PATH} 2>/dev/null || true"
+             }
+           ]
+         }
+       ]
+     }
+}
+```
 
 **解读**：
 
@@ -57,8 +72,23 @@ Hooks 配置在 `.claude/settings.json`（项目级）或 `~/.claude/settings.
 #### 实战 Hook 2：禁止危险命令
 
 这是安全守门员——防止 Claude Code（或恶意输入）执行危险操作。
-
-`       1  2  3  4  5  6  7  8  9  10  11  12  13  14  15          {     "hooks": {       "PreToolUse": [         {           "matcher": "Bash",           "hooks": [             {               "type": "command",               "command": "if echo '${CLAUDE_TOOL_INPUT}' | grep -qE 'rm -rf /|sudo rm|git push --force'; then echo 'BLOCKED: Dangerous command detected' >&2 && exit 1; fi"             }           ]         }       ]     }   }            `
+```
+{
+     "hooks": {
+       "PreToolUse": [
+         {
+           "matcher": "Bash",
+           "hooks": [
+             {
+               "type": "command",
+               "command": "if echo '${CLAUDE_TOOL_INPUT}' | grep -qE 'rm -rf /|sudo rm|git push --force'; then echo 'BLOCKED: Dangerous command detected' >&2 && exit 1; fi"
+             }
+           ]
+         }
+       ]
+     }
+}
+```
 
 **效果**：当 Claude Code 尝试执行包含 `rm -rf /`、`sudo rm`、`git push --force` 等危险命令时，Hook 会拦截并阻止执行，输出警告。
 
@@ -67,8 +97,23 @@ Hooks 配置在 `.claude/settings.json`（项目级）或 `~/.claude/settings.
 #### 实战 Hook 3：Git 提交前自动跑测试
 
 每一次 Git 提交前，自动运行测试——测试不通过，提交不成立。
-
-`       1  2  3  4  5  6  7  8  9  10  11  12  13  14  15          {     "hooks": {       "PreToolUse": [         {           "matcher": "Bash",           "hooks": [             {               "type": "command",               "command": "if echo '${CLAUDE_TOOL_INPUT}' | grep -q 'git commit'; then npm test || (echo 'Tests failed, commit blocked' >&2 && exit 1); fi"             }           ]         }       ]     }   }            `
+```
+{
+     "hooks": {
+       "PreToolUse": [
+         {
+           "matcher": "Bash",
+           "hooks": [
+             {
+               "type": "command",
+               "command": "if echo '${CLAUDE_TOOL_INPUT}' | grep -q 'git commit'; then npm test || (echo 'Tests failed, commit blocked' >&2 && exit 1); fi"
+             }
+           ]
+         }
+       ]
+     }
+}
+```
 
 **效果**：Claude Code 执行 `git commit` 之前，先跑测试。测试通过 → 继续提交；测试失败 → 阻止提交，输出失败信息。
 
