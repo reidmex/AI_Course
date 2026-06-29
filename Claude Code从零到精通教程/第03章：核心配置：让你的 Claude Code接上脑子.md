@@ -14,7 +14,7 @@ saved: 2026-06-26T09:55:18.658Z
 
 ### 3.1 理解关键：Claude Code 的模型是怎么连接的
 
-![图片](https://mmbiz.qpic.cn/mmbiz_jpg/MiaEMf64YmohkPeDVHXJIfIzLKhVicUPI262sPX7skYkFKgC2EjjUanR9KucHcFgErictjjnkVCQU8t0yPX3P2HibGkWBLXmo8Jn9th5R21DaHE/640?wx_fmt=jpeg&from=appmsg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=0)
+![图片](./images/0301.jpg)
 
 安装好 Claude Code 之后，如果你直接输入 `claude` 启动，大概率会遇到连接失败或认证错误。这是因为 Claude Code 默认连接的是 Anthropic 的官方 API 服务器，而这个服务器在国内基本无法直接访问。
 
@@ -46,7 +46,7 @@ ANTHROPIC_API_KEY="sk-ant-xxxxxxxxxxxx"          # API 密钥
 
 ### 3.2 路径A：国产模型直连（推荐首选）
 
-![图片](data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='1px' height='1px' viewBox='0 0 1 1' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3E%3C/title%3E%3Cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' fill-opacity='0'%3E%3Cg transform='translate(-249.000000, -126.000000)' fill='%23FFFFFF'%3E%3Crect x='249' y='126' width='1' height='1'%3E%3C/rect%3E%3C/g%3E%3C/g%3E%3C/svg%3E)
+![图片](./images/0302.jpg)
 
 #### 3.2.1 智谱 GLM Coding Plan 配置
 
@@ -175,7 +175,7 @@ Moonshot|Kimi Code|通过中转服务|长上下文支持好
 
 ### 3.3 路径B：中转 API 使用官方 Claude 模型（高阶场景）
 
-![图片](https://mmbiz.qpic.cn/mmbiz_jpg/MiaEMf64YmojdNg4EhuJJialzibhbsDgkG3L6uFVzzSiaMTSUDssEgEckKiaeibEwdVftJCjmPlPuia7ck3GlUvfOBicapOgQTIZxv1CXq4MdGByJGU/640?wx_fmt=jpeg&from=appmsg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=2)
+![图片](./images/0303.jpg)
 
 #### 什么场景下值得用？
 
@@ -224,7 +224,7 @@ export ANTHROPIC_API_KEY="中转商提供的Key"
 
 ### 3.4 路径C：本地模型零成本方案（探索性方案）
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_jpg/MiaEMf64YmogxQiatGA754BT4x8pE2ZAxic21K1xvRFuAlLQGuuryJJwLrN7aElA1Oeib0CDROCIYbo5C4tkZRNgjqpQXu7MoqLY9AegPt5ib8EY/640?wx_fmt=jpeg&from=appmsg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=3)
+![图片](./images/0304.jpg)
 
 如果你对数据隐私有极高要求，或者想完全零成本使用 Claude Code，可以尝试本地模型方案。
 
@@ -286,7 +286,7 @@ export ANTHROPIC_API_KEY="ollama"  # Ollama 不需要真实 Key
 
 ### 3.5 快速切换模型的工具推荐
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_jpg/MiaEMf64Ymoj3OukLUz8xCZufTxzXfNAHtONnETMicXNKDEicapCk1u4YoMmpQrtovERa7V7jOOv5wVAjaOcn4PZzicYJ06FBficfzRP4q13obyg/640?wx_fmt=jpeg&from=appmsg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=4)
+![图片](./images/0305.jpg)
 
 一旦你配置了多个模型源（国产、中转、本地），频繁修改环境变量会非常麻烦。以下工具可以帮你快速切换。
 
