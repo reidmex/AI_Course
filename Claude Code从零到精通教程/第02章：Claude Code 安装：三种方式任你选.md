@@ -1,9 +1,3 @@
----
-title: "Claude Code零基础小白教程第2章：Claude Code 安装：三种方式任你选"
-url: https://mp.weixin.qq.com/s?__biz=MjM5NzQ0NzIyOQ==&mid=2448131802&idx=1&sn=15371be29148cc7ace2a2b41abcd9a48&chksm=b2c6f58885b17c9ec492cdafe2256bb31ef058836d25ff9de3cf594ad1967a5c0979cc2e30da&cur_album_id=4566215426073788416&scene=189#wechat_redirect
-byline: "萝卜啊"
-saved: 2026-06-26T09:54:35.615Z
----
 # Claude Code零基础小白教程第2章：Claude Code 安装：三种方式任你选
 
 > **第一阶段包含第一章至第四章**：主要任务是快速上手——从安装到跑通第一个任务
