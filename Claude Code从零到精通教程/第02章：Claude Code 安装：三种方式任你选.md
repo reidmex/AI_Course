@@ -14,7 +14,7 @@ Claude Code 的安装本身并不复杂——本质上就是一个 npm 包。但
 
 ### 2.1 npm 官方安装（最推荐，最稳定）
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_jpg/MiaEMf64Ymohr4zQyT7Zz78QAxO9ogxCKVaYV2icoM5uxxWQX2Ps9Kz5Z8pTxF0rCtn5LUlicMA2pUicz0COZZBvicasaVYY2uLLgQH1Yoia4kdYM/640?wx_fmt=jpeg&from=appmsg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=0)
+![图片](./images/0201.jpg)
 
 这是最正统的安装方式，适用于所有平台，也是后续升级最方便的途径。
 
