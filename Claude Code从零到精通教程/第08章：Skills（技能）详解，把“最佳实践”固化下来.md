@@ -1,9 +1,3 @@
----
-title: "Claude Code零基础小白教程第8章：Skills（技能）详解，把“最佳实践”固化下来"
-url: https://mp.weixin.qq.com/s?__biz=MjM5NzQ0NzIyOQ==&mid=2448131865&idx=1&sn=ce37e01a852aa499011e03e103508d7a&chksm=b2c6f44b85b17d5db1ff020dbfd9d687356521114cb54ea2f79f1e980ee39ca66861818234bd&cur_album_id=4566215426073788416&scene=189#wechat_redirect
-byline: "萝卜啊"
-saved: 2026-06-26T09:59:36.760Z
----
 # Claude Code零基础小白教程第8章：Skills（技能）详解，把“最佳实践”固化下来
 
 > **第三阶段**：进阶精通——打造你的 AI 工作流
@@ -12,9 +6,7 @@ saved: 2026-06-26T09:59:36.760Z
 
 ### 8.1 Skills 是什么：给 AI 写的 SOP（标准操作流程）
 
-![01-section](https://mmbiz.qpic.cn/sz_mmbiz_jpg/MiaEMf64YmoiaibKQTxxpXebdQEQqEyS2ECZxNyKibdoPiaicictSo3doDQ8964JhhrwiaE8h6oS95WJSoFcS6aia5d6DaQgKlppUVRm6VAr8UuR19QY/640?wx_fmt=jpeg&from=appmsg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=0)
-
-01-section
+![图片](./images/0801.jpg)
 
 如果你用过制造企业的 SOP（标准操作流程），Skills 的概念就非常好理解。
 
@@ -40,9 +32,7 @@ saved: 2026-06-26T09:59:36.760Z
 
 ### 8.2 创建你的第一个 Skill
 
-![02-section](https://mmbiz.qpic.cn/sz_mmbiz_jpg/MiaEMf64YmohCIf3q89ibjvjzXljopnHpZEFuhwGj6TiaFxpQ3fa6OcTlic2L9XlhszkQkDYklOC7OEJuiayToYXeHUJHGmuz6CiawVpFntlRsJP8/640?wx_fmt=jpeg&from=appmsg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=1)
-
-02-section
+![图片](./images/0802.jpg)
 
 #### Skill 的文件结构
 
@@ -172,9 +162,7 @@ Claude Code 提供两种 Skill 触发方式：
 
 ### 8.3 常用现成 Skills 推荐与使用
 
-![03-section](https://mmbiz.qpic.cn/mmbiz_jpg/MiaEMf64Ymoia5wicdxicQZaCZWlsR5ibEtNXGM3bL94jXM3wuL9icY0fG1QSFFicQTDibYzeDk8HQfg4ttCWHULKcq6j2icvkiaD1jibicTKYHrpd26plE/640?wx_fmt=jpeg&from=appmsg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=2)
-
-03-section
+![图片](./images/0803.jpg)
 
 在你自己写 Skill 之前，社区已经有大量成熟的 Skills 可以直接使用。
 
@@ -222,7 +210,7 @@ pdf-form|批量填写 PDF 表单|行政/运营
 
 ### 8.4 Skills 的进阶技巧
 
-![图片](https://mmbiz.qpic.cn/mmbiz_jpg/MiaEMf64YmohV9UWKPaxibBYY2oEB4m8f1wgP8ibT4V1JqrhPYzqRNSnJRDU9BdsojMmdKvoRvVQlckAnBicydCIIsyic1mMqiblZkBgu5I384PVw/640?wx_fmt=jpeg&from=appmsg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=3)
+![图片](./images/0804.jpg)
 
 #### 多个 Skills 的协同编排
 
