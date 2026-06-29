@@ -1,9 +1,3 @@
----
-title: "Claude Code零基础小白教程第3章：核心配置：让你的 Claude Code接上脑子"
-url: https://mp.weixin.qq.com/s?__biz=MjM5NzQ0NzIyOQ==&mid=2448131812&idx=1&sn=8ab14a3a8ba3a465ae86f5feb770c26a&chksm=b2c6f5b685b17ca0a9757675d7bf7db119262af53a68eee8b4143b03ce9f478aa8764d654a2f&cur_album_id=4566215426073788416&scene=189#wechat_redirect
-byline: "萝卜啊"
-saved: 2026-06-26T09:55:18.658Z
----
 # Claude Code零基础小白教程第3章：核心配置：让你的 Claude Code接上脑子
 
 > **第一阶段包含第一章至第四章**：主要任务是快速上手——从安装到跑通第一个任务
