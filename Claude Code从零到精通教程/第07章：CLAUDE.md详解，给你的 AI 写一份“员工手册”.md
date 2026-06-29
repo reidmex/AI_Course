@@ -1,9 +1,3 @@
----
-title: "Claude Code零基础小白教程第7章：CLAUDE.md详解，给你的 AI 写一份“员工手册”"
-url: https://mp.weixin.qq.com/s?__biz=MjM5NzQ0NzIyOQ==&mid=2448131852&idx=1&sn=82fec9cccc33fb8c587b91462db93cc8&chksm=b2c6f45e85b17d482c6d2f1cfea6bed8c8c2257290ade63a3407d0b41cee586579f8839c0a8c&cur_album_id=4566215426073788416&scene=189#wechat_redirect
-byline: "萝卜啊"
-saved: 2026-06-26T09:59:16.941Z
----
 # Claude Code零基础小白教程第7章：CLAUDE.md详解，给你的 AI 写一份“员工手册”
 
 > **第三阶段**：进阶精通——打造你的 AI 工作流
@@ -12,9 +6,7 @@ saved: 2026-06-26T09:59:16.941Z
 
 ### 7.1 CLAUDE.md 是什么，为什么它是 Claude Code 的“灵魂文件”
 
-![01-section](https://mmbiz.qpic.cn/sz_mmbiz_jpg/MiaEMf64Ymoh4w8zuLSfrHzqt2sErCYa3xFvkFV1hFqCaTp5eiayG8WAocktX9tmmN0tV20kPEcffKWrFMSumgT8O6siao8VmWEFb2YnbY8VGA/640?wx_fmt=jpeg&from=appmsg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=0)
-
-01-section
+![图片](./images/0701.jpg)
 
 想象你新招了一个助理。如果什么都不交代，直接让他干活，他只能凭通用经验行事，做出来的结果大概率不符合你的习惯。但如果你花十分钟写了一份简单的操作手册——告诉他你的偏好、项目的约定、常用的工具和路径——他的工作效率和准确度会立刻提升几个档次。
 
@@ -50,9 +42,7 @@ CLAUDE.md 就是 Claude Code 的“员工手册”。
 
 ### 7.2 CLAUDE.md 的黄金模板
 
-![02-section](https://mmbiz.qpic.cn/mmbiz_jpg/MiaEMf64YmogS86uQ2Rl8NTUk2FfqHJj4ltibQU54Lurke5FXeNaAC163IGxTALSllJrqQ7ZnO48xSBhdQKwlVUxSsKenzD1Rv1xt0xJicDbjA/640?wx_fmt=jpeg&from=appmsg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=1)
-
-02-section
+![图片](./images/0702.jpg)
 
 一个高质量的 CLAUDE.md 应该包含以下核心信息。你可以直接复制下面的模板，填入你自己的项目信息。
 
@@ -136,9 +126,7 @@ CLAUDE.md 就是 Claude Code 的“员工手册”。
 
 ### 7.3 CLAUDE.md 的进阶用法
 
-![03-section](https://mmbiz.qpic.cn/sz_mmbiz_jpg/MiaEMf64Ymojic2CjdX83iaRtqY8FvSWt9HwrjyzenIZQxicYNkWibJshPSxDcnicOJspGPT9nIaD1LtfcWmficvCxNL5K6T3mHjMgf8UJ5cCibBdbc/640?wx_fmt=jpeg&from=appmsg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=2)
-
-03-section
+![图片](./images/0703.jpg)
 
 #### 工作流嵌入
 
