@@ -1,9 +1,3 @@
----
-title: "Claude Code零基础小白教程第9章：MCP（模型上下文协议）详解，让 Claude Code 连接一切"
-url: https://mp.weixin.qq.com/s?__biz=MjM5NzQ0NzIyOQ==&mid=2448131874&idx=1&sn=63a8a91ecee86d382bcab7c54842affb&chksm=b2c6f47085b17d66eaca1d67661f9e963262f23fab3abec7f4cd203dd1d68a3ebba2179c5c9b&cur_album_id=4566215426073788416&scene=189#wechat_redirect
-byline: "萝卜啊"
-saved: 2026-06-26T10:00:02.191Z
----
 # Claude Code零基础小白教程第9章：MCP（模型上下文协议）详解，让 Claude Code 连接一切
 
 > **第三阶段**：进阶精通——打造你的 AI 工作流
@@ -12,9 +6,7 @@ saved: 2026-06-26T10:00:02.191Z
 
 ### 9.1 MCP 是什么：AI 世界的“USB 接口”
 
-![01-section](https://mmbiz.qpic.cn/sz_mmbiz_jpg/MiaEMf64YmohJpoG3VXiaROcjAJxSN8jEsfx61ANKuIdIIFukhicIWZQ3D5fzx6bxymotzrM2qmflXIEnH5fibTCoH5gu12WQntT6x80mXtiaHHA/640?wx_fmt=jpeg&from=appmsg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=0)
-
-01-section
+![图片](./images/0901.jpg)
 
 如果说 Skills 是给 AI 写的“内部工作流程”，那么 MCP（Model Context Protocol，模型上下文协议）就是 AI 连接外部世界的“接口标准”。
 
@@ -52,9 +44,7 @@ Claude Code 自带一组内置工具（Bash 命令执行、文件读写、搜索
 
 ### 9.2 配置你的第一个 MCP 服务器
 
-![02-section](https://mmbiz.qpic.cn/sz_mmbiz_jpg/MiaEMf64YmogPB9YuQ1armLNsHMPpIRJIPt16sdYH7bPrAjZaKTqARE5iag1596gx3RE1V0nkMrkDLm6khC8ibJltkyYqycU4YLUeOMliaEiaPys/640?wx_fmt=jpeg&from=appmsg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=1)
-
-02-section
+![图片](./images/0902.jpg)
 
 \#### 配置文件位置
 
@@ -143,9 +133,7 @@ npm install -g @anthropic/mcp-server-github
 
 ### 9.3 常用 MCP 服务器推荐
 
-![03-section](https://mmbiz.qpic.cn/sz_mmbiz_jpg/MiaEMf64YmoiaBs7LshBWQrRVkfWPlicc0QyOxmRqiaRnGqcPh0LZH5cUR6fFAib9myAqUGKZmuXAWJ8icibN1EExQknCkLwuK9aqhhI0mZUObkLHg/640?wx_fmt=jpeg&from=appmsg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=2)
-
-03-section
+![图片](./images/0903.jpg)
 
 #### 适合程序员的
 
@@ -186,9 +174,7 @@ Slack|发送消息、读取频道|社区维护
 
 ### 9.4 MCP + Skills 的协同威力
 
-![04-section](https://mmbiz.qpic.cn/mmbiz_jpg/MiaEMf64Ymoiaehibx4rnrvALIIyNdQEA6RKVQlKAzHa5HCAqqcE77ibLMicJmuH4icRr5GFDlPJLrzPujFVicgO7FibicNoYo5D6c2tCsdAn2YuquPo/640?wx_fmt=jpeg&from=appmsg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=3)
-
-04-section
+![图片](./images/0904.jpg)
 
 MCP 提供了“做什么”的能力，Skills 提供了“怎么做”的流程。两者结合，可以创造出强大的自动化工作流。
 
