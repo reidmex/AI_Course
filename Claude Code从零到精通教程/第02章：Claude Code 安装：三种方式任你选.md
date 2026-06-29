@@ -77,7 +77,7 @@ npm update -g @anthropic-ai/claude-code
 
 ### 2.2 macOS Homebrew 安装
 
-![图片](https://mmbiz.qpic.cn/mmbiz_jpg/MiaEMf64Ymohgj9buWQ1RCxtP8NvWs87EMuomDOJ0euY4XztOJodouCTSh3nwTUhEprINCZSfHDUK2OyVTKFbpOPkzTsPuPUPiaARsh75Q1j4/640?wx_fmt=jpeg&from=appmsg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=1)
+![图片](./images/0202.jpg)
 
 如果你使用 Mac 且已经装了 Homebrew，这是最省心的方式——不需要 npm，也不需要处理权限问题。
 ```
@@ -99,7 +99,7 @@ brew install --cask claude-code
 
 ### 2.3 Windows 专用安装指南
 
-![图片](https://mmbiz.qpic.cn/mmbiz_jpg/MiaEMf64YmojjPEhjPuRiabFN1NQp6ic9xfsz0UFcu1pYjoiazKFW9oYEiaCT6xGu3zJMgPDH4ibfzwa1ibJqas5T0ibfep1ooqTMJt3y7FafqGzaz0/640?wx_fmt=jpeg&from=appmsg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=2)
+![图片](./images/0203.jpg)
 
 Windows 用户需要特别注意两个前置条件：
 
@@ -155,7 +155,7 @@ winget install Anthropic.ClaudeCode
 
 ### 2.4 一键安装的“捷径”工具
 
-![图片](https://mmbiz.qpic.cn/mmbiz_jpg/MiaEMf64Ymojs4k8ROMZqMKgGOxnOajibTBial3ZjIq0hCIfpbeUsmTaeFZ5Oy9l1RThgY97k5xpuXw9l7dsibibGIvzHSq5lSlibKrl4CjBD4AK8/640?wx_fmt=jpeg&from=appmsg&watermark=1&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=3)
+![图片](./images/0204.jpg)
 
 社区开发者针对国内用户的需求，开发了一些图形化或一键式安装工具。这些工具不是必须的，但对于不想折腾命令行的用户来说可以省不少事。
 
