@@ -1,9 +1,3 @@
----
-title: "Claude Code零基础小白教程第12章：Token 节省完全指南：用最少的钱，办最大的事"
-url: https://mp.weixin.qq.com/s?__biz=MjM5NzQ0NzIyOQ==&mid=2448131902&idx=1&sn=c3effadedfb164ce4463f44e824841e9&chksm=b2c6f46c85b17d7a1656f7e8ee2ce1d4591df07dcf8c0f341a4c956e4523d7d43b7395722237&cur_album_id=4566215426073788416&scene=190#rd
-byline: "萝卜啊"
-saved: 2026-07-01T09:37:49.094Z
----
 # Claude Code零基础小白教程第12章：Token 节省完全指南：用最少的钱，办最大的事
 
 > **第四阶段**：效率与技巧——Skill 深度玩法、Token 节省与实用生态
